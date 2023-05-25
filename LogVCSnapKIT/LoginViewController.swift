@@ -75,44 +75,52 @@ class LoginViewController: UIViewController {
     
     private lazy var connectLabel: UILabel = {
         let label = UILabel()
-        label.text = "Login"
+        label.text = "or connect with"
         return label
     }()
     
     private lazy var facebookButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.layer.cornerRadius = 15
+        button.backgroundColor = .blue
+        button.setTitle("Login", for: .normal)
+        button.tintColor = .white
         return button
     }()
     
     private lazy var twitterButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.layer.cornerRadius = 15
+        button.backgroundColor = .blue
+        button.setTitle("Login", for: .normal)
+        button.tintColor = .white
         return button
     }()
     
     private lazy var socialMediaStack: UIStackView = {
         let stack = UIStackView()
-        stack.axis = .vertical
+        stack.axis = .horizontal
         stack.spacing = 16
         return stack
     }()
     
     private lazy var haveAccountLabel: UILabel = {
         let label = UILabel()
-        label.text = "Login"
+        label.text = "Don't have account?"
         return label
     }()
     
     private lazy var signUpButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.layer.cornerRadius = 15
+        button.setTitle("Login", for: .normal)
+        button.tintColor = .white
         return button
     }()
     
     private lazy var forgetStack: UIStackView = {
         let stack = UIStackView()
-        stack.axis = .vertical
+        stack.axis = .horizontal
         stack.spacing = 16
         return stack
     }()
@@ -120,6 +128,8 @@ class LoginViewController: UIViewController {
     private lazy var footerStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
+        stack.distribution = .fill
+        stack.alignment = .fill
         stack.spacing = 16
         return stack
     }()
@@ -138,9 +148,12 @@ class LoginViewController: UIViewController {
     }
 }
 
+// MARK: - Private methods
+
 extension LoginViewController {
     private func setupHierarch() {
         view.addSubview(headerStack)
+        view.addSubview(footerStack)
         
         view.subviews.forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -158,6 +171,16 @@ extension LoginViewController {
         headerStack.addArrangedSubview(loginStack)
         headerStack.addArrangedSubview(buttonStack)
         
+        socialMediaStack.addArrangedSubview(facebookButton)
+        socialMediaStack.addArrangedSubview(twitterButton)
+        
+        forgetStack.addArrangedSubview(haveAccountLabel)
+        forgetStack.addArrangedSubview(signUpButton)
+        
+        footerStack.addArrangedSubview(connectLabel)
+        footerStack.addArrangedSubview(socialMediaStack)
+        footerStack.addArrangedSubview(forgetStack)
+                
         loginButton.snp.makeConstraints { make in
             make.height.equalTo(40)
         }
@@ -174,10 +197,14 @@ extension LoginViewController {
             make.centerX.equalTo(view)
             make.top.equalTo(view).offset(110)
         }
+        
+        footerStack.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.bottom.equalTo(view).offset(-110)
+        }
     }
     
     private func setupView() {
         view.backgroundColor = .systemGray
-        
     }
 }
