@@ -13,48 +13,61 @@ class LoginViewController: UIViewController {
     
     private lazy var loginLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Login"
+        label.font = UIFont.boldSystemFont(ofSize: 35)
+        label.textColor = .white
         return label
     }()
     
     private lazy var loginTF: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Login"
+        textField.borderStyle = .roundedRect
         return textField
     }()
     
     private lazy var passwordTF: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.placeholder = "Password"
+        textField.borderStyle = .roundedRect
         return textField
     }()
     
     private lazy var loginStack: UIStackView = {
         let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.spacing = 16
         return stack
     }()
     
     private lazy var loginButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = UIButton(type: .system)
         button.layer.cornerRadius = 15
+        button.backgroundColor = .blue
+        button.setTitle("Login", for: .normal)
+        button.tintColor = .white
         return button
     }()
     
     private lazy var forgotButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = UIButton(type: .system)
         button.layer.cornerRadius = 15
+        button.setTitle("forgot your password?", for: .normal)
+        button.setTitleColor(.white, for: .normal)
         return button
+    }()
+    
+    private lazy var headerStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 50
+        stack.alignment = .center
+        stack.distribution = .fill
+        return stack
     }()
     
     private lazy var buttonStack: UIStackView = {
         let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.spacing = 16
         return stack
@@ -62,28 +75,24 @@ class LoginViewController: UIViewController {
     
     private lazy var connectLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Login"
         return label
     }()
     
     private lazy var facebookButton: UIButton = {
         let button = UIButton()
-        button.automaticallyUpdatesConfiguration = false
         button.layer.cornerRadius = 15
         return button
     }()
     
     private lazy var twitterButton: UIButton = {
         let button = UIButton()
-        button.automaticallyUpdatesConfiguration = false
         button.layer.cornerRadius = 15
         return button
     }()
     
     private lazy var socialMediaStack: UIStackView = {
         let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.spacing = 16
         return stack
@@ -91,21 +100,18 @@ class LoginViewController: UIViewController {
     
     private lazy var haveAccountLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Login"
         return label
     }()
     
     private lazy var signUpButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.layer.cornerRadius = 15
         return button
     }()
     
     private lazy var forgetStack: UIStackView = {
         let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.spacing = 16
         return stack
@@ -113,7 +119,6 @@ class LoginViewController: UIViewController {
     
     private lazy var footerStack: UIStackView = {
         let stack = UIStackView()
-        stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
         stack.spacing = 16
         return stack
@@ -123,17 +128,56 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupView()
+        
+        setupHierarch()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        setupLayout()
     }
 }
 
 extension LoginViewController {
     private func setupHierarch() {
+        view.addSubview(headerStack)
+        
+        view.subviews.forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        }
     }
     
     private func setupLayout() {
+        loginStack.addArrangedSubview(loginTF)
+        loginStack.addArrangedSubview(passwordTF)
+        
+        buttonStack.addArrangedSubview(loginButton)
+        buttonStack.addArrangedSubview(forgotButton)
+        
+        headerStack.addArrangedSubview(loginLabel)
+        headerStack.addArrangedSubview(loginStack)
+        headerStack.addArrangedSubview(buttonStack)
+        
+        loginButton.snp.makeConstraints { make in
+            make.height.equalTo(40)
+        }
+        
+        loginStack.snp.makeConstraints { make in
+            make.width.equalTo(280)
+        }
+        
+        buttonStack.snp.makeConstraints { make in
+            make.width.equalTo(280)
+        }
+        
+        headerStack.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(view).offset(110)
+        }
     }
     
     private func setupView() {
+        view.backgroundColor = .systemGray
+        
     }
 }
