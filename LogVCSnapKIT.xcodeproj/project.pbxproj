@@ -11,7 +11,6 @@
 		F36988A72A1F7B09009E20CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36988A62A1F7B09009E20CE /* SceneDelegate.swift */; };
 		F36988A92A1F7B09009E20CE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36988A82A1F7B09009E20CE /* LoginViewController.swift */; };
 		F36988AE2A1F7B0A009E20CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F36988AD2A1F7B0A009E20CE /* Assets.xcassets */; };
-		F36988B12A1F7B0A009E20CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F36988AF2A1F7B0A009E20CE /* LaunchScreen.storyboard */; };
 		F36988BA2A1F7BD9009E20CE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F36988B92A1F7BD9009E20CE /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -21,7 +20,6 @@
 		F36988A62A1F7B09009E20CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F36988A82A1F7B09009E20CE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F36988AD2A1F7B0A009E20CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F36988B02A1F7B0A009E20CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F36988B22A1F7B0A009E20CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -37,6 +35,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F310EEA82A20D8CC003F8924 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				F36988B22A1F7B0A009E20CE /* Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		F310EEA92A20D8EA003F8924 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F36988AD2A1F7B0A009E20CE /* Assets.xcassets */,
+				F310EEA82A20D8CC003F8924 /* Configuration */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F310EEAA2A20D913003F8924 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F36988A42A1F7B09009E20CE /* AppDelegate.swift */,
+				F36988A62A1F7B09009E20CE /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F310EEAB2A20D91B003F8924 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F36988A82A1F7B09009E20CE /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F310EEAC2A20D925003F8924 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				F310EEAA2A20D913003F8924 /* App */,
+				F310EEAB2A20D91B003F8924 /* View */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		F36988982A1F7B09009E20CE = {
 			isa = PBXGroup;
 			children = (
@@ -56,12 +97,8 @@
 		F36988A32A1F7B09009E20CE /* LogVCSnapKIT */ = {
 			isa = PBXGroup;
 			children = (
-				F36988A42A1F7B09009E20CE /* AppDelegate.swift */,
-				F36988A62A1F7B09009E20CE /* SceneDelegate.swift */,
-				F36988A82A1F7B09009E20CE /* LoginViewController.swift */,
-				F36988AD2A1F7B0A009E20CE /* Assets.xcassets */,
-				F36988AF2A1F7B0A009E20CE /* LaunchScreen.storyboard */,
-				F36988B22A1F7B0A009E20CE /* Info.plist */,
+				F310EEA92A20D8EA003F8924 /* Resources */,
+				F310EEAC2A20D925003F8924 /* Sources */,
 			);
 			path = LogVCSnapKIT;
 			sourceTree = "<group>";
@@ -130,7 +167,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F36988B12A1F7B0A009E20CE /* LaunchScreen.storyboard in Resources */,
 				F36988AE2A1F7B0A009E20CE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,17 +185,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		F36988AF2A1F7B0A009E20CE /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F36988B02A1F7B0A009E20CE /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F36988B32A1F7B0A009E20CE /* Debug */ = {
@@ -285,7 +310,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9DSLGCL4J8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LogVCSnapKIT/Info.plist;
+				INFOPLIST_FILE = LogVCSnapKIT/Resources/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -312,7 +337,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9DSLGCL4J8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = LogVCSnapKIT/Info.plist;
+				INFOPLIST_FILE = LogVCSnapKIT/Resources/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
