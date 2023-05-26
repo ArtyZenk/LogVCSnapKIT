@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 class LoginViewController: UIViewController {
+    
     // MARK: - Elements
     
     private lazy var loginLabel: UILabel = {
@@ -22,6 +23,7 @@ class LoginViewController: UIViewController {
     private lazy var loginTF: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Login"
+        textField.backgroundColor = .white
         textField.borderStyle = .roundedRect
         return textField
     }()
@@ -58,7 +60,7 @@ class LoginViewController: UIViewController {
     private lazy var forgotButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 15
-        button.setTitle("forgot your password?", for: .normal)
+        button.setTitle("Forgot your password?", for: .normal)
         button.setTitleColor(.white, for: .normal)
         return button
     }()
@@ -82,6 +84,7 @@ class LoginViewController: UIViewController {
     private lazy var connectLabel: UILabel = {
         let label = UILabel()
         label.text = "or connect with"
+        label.textColor = .systemGray
         return label
     }()
     
@@ -127,7 +130,7 @@ class LoginViewController: UIViewController {
     private lazy var haveAccountLabel: UILabel = {
         let label = UILabel()
         label.text = "Don't have account?"
-        label.textColor = .black
+        label.textColor = .systemGray
         return label
     }()
     
@@ -135,7 +138,7 @@ class LoginViewController: UIViewController {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 15
         button.setTitle("Sign up", for: .normal)
-        button.tintColor = .white
+        button.tintColor = .blue
         return button
     }()
     
@@ -151,7 +154,7 @@ class LoginViewController: UIViewController {
         stack.axis = .vertical
         stack.distribution = .fill
         stack.alignment = .center
-        stack.spacing = 16
+        stack.spacing = 30
         return stack
     }()
     
@@ -220,19 +223,53 @@ extension LoginViewController {
         
         facebookButton.snp.makeConstraints { make in
             make.width.equalTo(150)
+            make.height.equalTo(35)
         }
         
         twitterButton.snp.makeConstraints { make in
             make.width.equalTo(150)
+            make.height.equalTo(35)
+
         }
         
         footerStack.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.bottom.equalTo(view).offset(-110)
+            make.bottom.equalTo(view).offset(-80)
         }
+        
+        loginTF.setLeftIcon((UIImage(systemName: "person")!))
+        loginTF.setRightIcon((UIImage(systemName: "chevron.forward.circle.fill")!))
+        passwordTF.setLeftIcon((UIImage(systemName: "lock")!))
     }
     
     private func setupView() {
-        view.backgroundColor = .gray
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = [UIColor.systemBlue.cgColor, UIColor.white.cgColor]
+        view.layer.insertSublayer(gradientLayer, at: 0)
+    }
+}
+
+// MARK: - UITextField Methods
+
+extension UITextField {
+    func setLeftIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame: CGRect(x: 20, y: 5, width: 20, height: 20))
+        iconView.image = image
+        iconView.tintColor = .systemGray
+        let iconContainerView = UIView(frame: CGRect(x: 20, y: 0, width: 50, height: 30))
+        iconContainerView.addSubview(iconView)
+        leftView = iconContainerView
+        leftViewMode = .always
+    }
+    
+    func setRightIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame: CGRect(x: 20, y: 5, width: 20, height: 20))
+        iconView.image = image
+        iconView.tintColor = .green
+        let iconContainerView = UIView(frame: CGRect(x: 20, y: 0, width: 50, height: 30))
+        iconContainerView.addSubview(iconView)
+        rightView = iconContainerView
+        rightViewMode = .always
     }
 }
