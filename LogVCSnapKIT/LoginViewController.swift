@@ -43,9 +43,15 @@ class LoginViewController: UIViewController {
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 15
-        button.backgroundColor = .blue
+        button.backgroundColor = UIColor(red: 85 / 255, green: 114 / 255, blue: 180 / 255, alpha: 1)
         button.setTitle("Login", for: .normal)
         button.tintColor = .white
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 10
+        button.layer.shouldRasterize = true
+        button.layer.rasterizationScale = UIScreen.main.scale
         return button
     }()
     
@@ -82,24 +88,38 @@ class LoginViewController: UIViewController {
     private lazy var facebookButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 15
-        button.backgroundColor = .blue
-        button.setTitle("Login", for: .normal)
+        button.backgroundColor = UIColor(red: 55 / 255, green: 164 / 255, blue: 239 / 255, alpha: 1)
+        button.setTitle("Facebook", for: .normal)
         button.tintColor = .white
+        button.layer.shadowColor = UIColor.blue.cgColor
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 10
+        button.layer.shouldRasterize = true
+        button.layer.rasterizationScale = UIScreen.main.scale
         return button
     }()
     
     private lazy var twitterButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 15
-        button.backgroundColor = .blue
-        button.setTitle("Login", for: .normal)
+        button.backgroundColor = UIColor(red: 85 / 255, green: 114 / 255, blue: 180 / 255, alpha: 1)
+        button.setTitle("Twitter", for: .normal)
         button.tintColor = .white
+        button.layer.shadowColor = UIColor.blue.cgColor
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 10
+        button.layer.shouldRasterize = true
+        button.layer.rasterizationScale = UIScreen.main.scale
         return button
     }()
     
     private lazy var socialMediaStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
+        stack.alignment = .fill
+        stack.distribution = .fill
         stack.spacing = 16
         return stack
     }()
@@ -107,13 +127,14 @@ class LoginViewController: UIViewController {
     private lazy var haveAccountLabel: UILabel = {
         let label = UILabel()
         label.text = "Don't have account?"
+        label.textColor = .black
         return label
     }()
     
     private lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.layer.cornerRadius = 15
-        button.setTitle("Login", for: .normal)
+        button.setTitle("Sign up", for: .normal)
         button.tintColor = .white
         return button
     }()
@@ -129,7 +150,7 @@ class LoginViewController: UIViewController {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.distribution = .fill
-        stack.alignment = .fill
+        stack.alignment = .center
         stack.spacing = 16
         return stack
     }()
@@ -139,7 +160,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
         setupHierarch()
     }
     
@@ -198,6 +218,14 @@ extension LoginViewController {
             make.top.equalTo(view).offset(110)
         }
         
+        facebookButton.snp.makeConstraints { make in
+            make.width.equalTo(150)
+        }
+        
+        twitterButton.snp.makeConstraints { make in
+            make.width.equalTo(150)
+        }
+        
         footerStack.snp.makeConstraints { make in
             make.centerX.equalTo(view)
             make.bottom.equalTo(view).offset(-110)
@@ -205,6 +233,6 @@ extension LoginViewController {
     }
     
     private func setupView() {
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .gray
     }
 }
